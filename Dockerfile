@@ -1,12 +1,6 @@
-FROM ubuntu
-ENTRYPOINT ["top", "-b"]
-CMD ["-c"]
+FROM alpine
+ARG buildno
+ARG gitcommithash
 
-#--------------------------------------
-
-FROM nodejs:16.13
-COPY build .
-ENTRYPOINT [ "/usr/bin/node" ]
-CMD [ "run", "index.js" ]
-
-#--------------------------------------
+RUN echo "Build number: $buildno"
+RUN echo "Based on commit: $gitcommithash"
