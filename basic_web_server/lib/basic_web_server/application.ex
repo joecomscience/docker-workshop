@@ -5,11 +5,8 @@ defmodule BasicWebServer.Application do
 
   use Application
 
-  @impl true
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
-      BasicWebServer.Repo,
       # Start the Telemetry supervisor
       BasicWebServerWeb.Telemetry,
       # Start the PubSub system
@@ -28,7 +25,6 @@ defmodule BasicWebServer.Application do
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
-  @impl true
   def config_change(changed, _new, removed) do
     BasicWebServerWeb.Endpoint.config_change(changed, removed)
     :ok
